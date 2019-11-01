@@ -54,8 +54,22 @@ public class SingletonMainMethod {
          * 识获取实例。注册式单例有两种写法：一种为容器缓存，一种为枚举登记。先来看枚举
          * 式单例的写法
          */
-        testEnumSingleton();
+//        testEnumSingleton();
 
+        /*
+        测试枚举破坏      枚举
+        ？枚举式单例也是《Effective Java》书中推荐的一种单例实现写法。在JDK 枚举的语法特殊性，以及反射也为枚举保
+        驾护航，让枚举式单例成为一种比较优雅的实现。
+         */
+        testRefEnumSingleton();
+    }
+
+    private static void testRefEnumSingleton() throws Exception {
+
+        Class clazz = EnumSingleton.class;
+        Constructor declaredConstructor = clazz.getDeclaredConstructor();
+        declaredConstructor.setAccessible(true);
+        declaredConstructor.newInstance();
     }
 
     private static void testEnumSingleton() throws Exception {
