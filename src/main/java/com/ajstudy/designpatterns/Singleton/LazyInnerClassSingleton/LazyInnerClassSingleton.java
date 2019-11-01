@@ -11,6 +11,9 @@ public class LazyInnerClassSingleton {
     //LazyInnerClassSingleton 的时候，会先初始化内部类
     //如果没使用的话，内部类是不加载的
     private LazyInnerClassSingleton() {
+        if (LazyHolder.LAZY != null) {
+            throw new RuntimeException("不允许创建多个实例");
+        }
     }
 
     //每一个关键字都不是多余的
