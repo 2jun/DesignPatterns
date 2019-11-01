@@ -6,6 +6,7 @@ import com.ajstudy.designpatterns.Singleton.LazyInnerClassSingleton.LazyInnerCla
 import com.ajstudy.designpatterns.Singleton.LazyInnerClassSingleton.LazytInnerClassSingletonExectorThread;
 import com.ajstudy.designpatterns.Singleton.LazySimpleSingleton.ExectorThread;
 import com.ajstudy.designpatterns.Singleton.SeriableSingleton.SeriableSingleton;
+import com.ajstudy.designpatterns.Singleton.registeSingleton.EnumSingleton;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -38,15 +39,46 @@ public class SingletonMainMethod {
         /********使用反射破坏单例************/
 //        testDestroySingleton();
 
-        /**
-         * 序列化破坏单例
-         * 当我们将一个单例对象创建好，有时候需要将对象序列化然后写入到磁盘，下次使用时
-         * 再从磁盘中读取到对象，反序列化转化为内存对象。反序列化后的对象会重新分配内存，
-         * 即重新创建。那如果序列化的目标的对象为单例对象，就违背了单例模式的初衷，相当
-         * 于破坏了单例，
-         */
-        testSeriableSingleton();
+//        /**
+//         * 序列化破坏单例
+//         * 当我们将一个单例对象创建好，有时候需要将对象序列化然后写入到磁盘，下次使用时
+//         * 再从磁盘中读取到对象，反序列化转化为内存对象。反序列化后的对象会重新分配内存，
+//         * 即重新创建。那如果序列化的目标的对象为单例对象，就违背了单例模式的初衷，相当
+//         * 于破坏了单例，
+//         */
+//        testSeriableSingleton();
 
+        /**
+         * 注册式单例
+         * 注册式单例又称为登记式单例，就是将每一个实例都登记到某一个地方，使用唯一的标
+         * 识获取实例。注册式单例有两种写法：一种为容器缓存，一种为枚举登记。先来看枚举
+         * 式单例的写法
+         */
+        testEnumSingleton();
+
+    }
+
+    private static void testEnumSingleton() throws Exception {
+
+        try {
+            EnumSingleton instance1 = null;
+            EnumSingleton instance2 = EnumSingleton.getInstance();
+            instance2.setData(new Object());
+            FileOutputStream fos = new FileOutputStream("EnumSingleton.obj");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(instance2);
+            oos.close();
+
+            FileInputStream fis = new FileInputStream("EnumSingleton.obj");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            instance1 = (EnumSingleton) ois.readObject();
+            ois.close();
+            System.out.println(instance1.getData());
+            System.out.println(instance2.getData());
+            System.out.println(instance1.getData() == instance2.getData());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void testSeriableSingleton() {
