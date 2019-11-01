@@ -8,9 +8,9 @@ package com.ajstudy.designpatterns.Singleton.LazyDoubleCheckSingleton;
 public class LazyDoubleCheckSingleton {
     private LazyDoubleCheckSingleton() {
     }
-
-    private volatile static LazyDoubleCheckSingleton lazy = null;
-
+//volatile 这里加不加都一样
+//    private volatile static LazyDoubleCheckSingleton lazy = null;
+    private static LazyDoubleCheckSingleton lazy = null;
     public static LazyDoubleCheckSingleton getInstance() {
         if (null == lazy) {
             synchronized (LazyDoubleCheckSingleton.class) {
