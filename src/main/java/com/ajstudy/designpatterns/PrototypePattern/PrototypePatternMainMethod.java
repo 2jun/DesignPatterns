@@ -1,5 +1,6 @@
 package com.ajstudy.designpatterns.PrototypePattern;
 
+import com.ajstudy.designpatterns.PrototypePattern.depthClone.QiTianDaSheng;
 import com.ajstudy.designpatterns.PrototypePattern.simpleClone.Client;
 import com.ajstudy.designpatterns.PrototypePattern.simpleClone.ConcretePrototypeA;
 
@@ -21,8 +22,30 @@ public class PrototypePatternMainMethod {
          *             这样的话， 如果我们修改任意一个对象中的属性值， concretePrototype 和
          *            concretePrototypeCone 的hobbies 值都会改变。这就是我们常说的浅克隆。
          */
-        testSimpleClone();
+//        testSimpleClone();
 
+        /**
+         * 深度克隆
+         * 我们换一个场景，大家都知道齐天大圣。首先它是一只猴子，有七十二般变化，把一根
+         * 毫毛就可以吹出千万个泼猴，手里还拿着金箍棒，金箍棒可以变大变小。这就是我们耳
+         * 熟能详的原型模式的经典体现
+         */
+        testDeepClone();
+
+    }
+
+    private static void testDeepClone() {
+
+        QiTianDaSheng qiTianDaSheng = new QiTianDaSheng();
+        try {
+            QiTianDaSheng clone = (QiTianDaSheng)qiTianDaSheng.clone();
+            System.out.println("深克隆：" + (qiTianDaSheng.jinGuBang == clone.jinGuBang));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        QiTianDaSheng q = new QiTianDaSheng();
+        QiTianDaSheng n = q.shallowClone(q);
+        System.out.println("浅克隆：" + (q.jinGuBang == n.jinGuBang));
     }
 
     private static void testSimpleClone() {
