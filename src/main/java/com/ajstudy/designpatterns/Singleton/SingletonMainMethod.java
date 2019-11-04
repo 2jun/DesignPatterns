@@ -6,6 +6,7 @@ import com.ajstudy.designpatterns.Singleton.LazyInnerClassSingleton.LazyInnerCla
 import com.ajstudy.designpatterns.Singleton.LazyInnerClassSingleton.LazytInnerClassSingletonExectorThread;
 import com.ajstudy.designpatterns.Singleton.LazySimpleSingleton.ExectorThread;
 import com.ajstudy.designpatterns.Singleton.SeriableSingleton.SeriableSingleton;
+import com.ajstudy.designpatterns.Singleton.ThreadLocalSingleton.ThreadLocalSingleton;
 import com.ajstudy.designpatterns.Singleton.registeSingleton.EnumSingleton;
 
 import java.io.FileInputStream;
@@ -61,15 +62,34 @@ public class SingletonMainMethod {
         ？枚举式单例也是《Effective Java》书中推荐的一种单例实现写法。在JDK 枚举的语法特殊性，以及反射也为枚举保
         驾护航，让枚举式单例成为一种比较优雅的实现。
          */
-        testRefEnumSingleton();
+//        testRefEnumSingleton();
+
+//线程单例实现ThreadLocal。ThreadLocal 不能保证其
+// * 创建的对象是全局唯一，但是能保证在单个线程中是唯一的，天生的线程安全。
+        testThreadLocalSingleton();
+    }
+
+    private static void testThreadLocalSingleton() {
+        System.out.println(ThreadLocalSingleton.getInstance());
+        System.out.println(ThreadLocalSingleton.getInstance());
+        System.out.println(ThreadLocalSingleton.getInstance());
+        System.out.println(ThreadLocalSingleton.getInstance());
+        new Thread(new ExectorThread()).start();
+        new Thread(new ExectorThread()).start();
+        new Thread(new ExectorThread()).start();
     }
 
     private static void testRefEnumSingleton() throws Exception {
 
+//        Class clazz = EnumSingleton.class;
+//        Constructor declaredConstructor = clazz.getDeclaredConstructor();
+//        declaredConstructor.setAccessible(true);
+//        declaredConstructor.newInstance();
+
         Class clazz = EnumSingleton.class;
-        Constructor declaredConstructor = clazz.getDeclaredConstructor();
+        Constructor declaredConstructor = clazz.getDeclaredConstructor(String.class,int.class);
         declaredConstructor.setAccessible(true);
-        declaredConstructor.newInstance();
+        declaredConstructor.newInstance("好人",11);
     }
 
     private static void testEnumSingleton() throws Exception {
@@ -103,7 +123,6 @@ public class SingletonMainMethod {
             fos = new FileOutputStream("SeriableSingleton.obj");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(s2);
-            oos.flush();
             oos.close();
             FileInputStream fis = new FileInputStream("SeriableSingleton.obj");
             ObjectInputStream ois = new ObjectInputStream(fis);
