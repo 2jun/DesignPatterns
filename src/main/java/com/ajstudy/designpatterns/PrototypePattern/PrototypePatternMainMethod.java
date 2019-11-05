@@ -30,8 +30,14 @@ public class PrototypePatternMainMethod {
          * 毫毛就可以吹出千万个泼猴，手里还拿着金箍棒，金箍棒可以变大变小。这就是我们耳
          * 熟能详的原型模式的经典体现
          */
-        testDeepClone();
+//        testDeepClone();
 
+        /*克隆破坏单例模式
+        如果我们克隆的目标的对象是单例对象，那意味着，深克隆就会破坏单例。实际上防止
+        克隆破坏单例解决思路非常简单，禁止深克隆便可。要么你我们的单例类不实现
+        Cloneable 接口；要么我们重写clone()方法，在clone 方法中返回单例对象即可
+        我们常用的ArrayList 就实现了Cloneable 接口(浅克隆)
+        */
     }
 
     private static void testDeepClone() {
