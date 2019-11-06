@@ -1,5 +1,8 @@
 package com.ajstudy.designpatterns.proxyPattern;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @ClassName: PrototypePatternMainMethod
  * @Author: aiJun
@@ -11,10 +14,10 @@ package com.ajstudy.designpatterns.proxyPattern;
 public class ProxyPatternMainMethod {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 //        静态代理模式测试
 //        代理类拿到被代理类的对象引用
-        testStaticProxy();
+//        testStaticProxy();
 
         /*。在分布式业务场景中，我们通常会对数据库进行分库分表，
         分库分表之后使用Java 操作时，就可能需要配置多个数据源，我们通过设置数据源路由
@@ -22,8 +25,15 @@ public class ProxyPatternMainMethod {
         testStaticProxyOfCheckDb();
     }
 
-    private static void testStaticProxyOfCheckDb() {
-
+    private static void testStaticProxyOfCheckDb() throws Exception {
+        Order order = new Order();
+        // Date today = new Date();
+        // order.setCreateTime(today.getTime());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = sdf.parse("2017/02/01");
+        order.setCreateTime(date.getTime());
+        IOrderService orderService = new OrderServiceStaticProxy(new OrderService());
+        orderService.createOrder(order);
 
     }
 

@@ -8,7 +8,7 @@ package com.ajstudy.designpatterns.proxyPattern;
  */
 public class DynamicDataSourceEntry {
     // 默认数据源
-    public final static String DEFAULT_SOURCE = null;
+    private final static String DEFAULT_SOURCE = null;
     private final static ThreadLocal<String> local = new ThreadLocal<>();
 
     private DynamicDataSourceEntry() {
