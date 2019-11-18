@@ -4,7 +4,9 @@ import com.ajstudy.designpatterns.proxyPattern.dynamicproxy.Customer;
 import com.ajstudy.designpatterns.proxyPattern.dynamicproxy.JDKMeipo;
 import com.ajstudy.designpatterns.proxyPattern.dynamicproxy.OrderServiceDynamicProxy;
 import com.ajstudy.designpatterns.proxyPattern.staticproxy.*;
+import sun.misc.ProxyGenerator;
 
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -36,7 +38,41 @@ public class ProxyPatternMainMethod {
     //式
 //        testDynamicProxy();
         /*我们再来看数据源动态路由业务，帮助小伙伴们对动态代理加深一下印象*/
-        testDynamicDatasourse();
+//        testDynamicDatasourse();
+
+//        高仿真JDK Proxy 手写实现
+        testRealizeJdkProxy();
+    }
+
+    /**
+     * 。既然JDK Proxy 功能如此强大，那么它是如何实现的呢？
+     * 我们现在来探究一下原理，并模仿JDK Proxy 自己动手写一个属于自己的动态代理。
+     * 我们都知道JDK Proxy 采用字节重组，重新生的对象来替代原始的对象以达到动态代理
+     * 的目的。JDK Proxy 生成对象的步骤如下：
+     * 1、拿到被代理对象的引用，并且获取到它的所有的接口，反射获取。
+     * 2、JDK Proxy 类重新生成一个新的类、同时新的类要实现被代理类所有实现的所有的接口。
+     * 3、动态生成Java 代码，把新加的业务逻辑方法由一定的逻辑代码去调用（在代码中体现）。
+     * 4、编译新生成的Java 代码.class。
+     * 5、再重新加载到JVM 中运行。
+     * 以上这个过程就叫字节码重组。JDK 中有一个规范，在ClassPath 下只要是$开头的class
+     * 文件一般都是自动生成的。那么我们有没有办法看到代替后的对象的真容呢？做一个这
+     * 样测试，我们从内存中的对象字节码通过文件流输出到一个新的class 文件，然后，利用
+     * 反编译工具查看class 的源代码
+     */
+    private static void testRealizeJdkProxy() {
+        try {
+            Person obj = (Person) new JDKMeipo().getInstance(new Customer());
+            obj.findLove();
+//通过反编译工具可以查看源代码
+            byte[] bytes = ProxyGenerator.generateProxyClass("$Proxy0", new Class[]{Person.class});
+            FileOutputStream os = new FileOutputStream("E://$Proxy0.class");
+            os.write(bytes);
+            os.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private static void testDynamicDatasourse() {
