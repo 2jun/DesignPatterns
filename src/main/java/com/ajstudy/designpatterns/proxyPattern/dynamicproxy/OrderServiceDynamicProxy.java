@@ -39,7 +39,7 @@ public class OrderServiceDynamicProxy implements InvocationHandler {
             Integer dbRouter = Integer.valueOf(yearFormat.format(new Date(time)));
             System.out.println("静态代理类自动分配到【DB_" + dbRouter + "】数据源处理数据。");
             DynamicDataSourceEntry.set(dbRouter);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
