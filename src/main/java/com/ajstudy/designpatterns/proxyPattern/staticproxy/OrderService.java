@@ -1,4 +1,4 @@
-package com.ajstudy.designpatterns.proxyPattern;
+package com.ajstudy.designpatterns.proxyPattern.staticproxy;
 
 /**
  * @ClassName: OrderService
@@ -9,6 +9,7 @@ package com.ajstudy.designpatterns.proxyPattern;
 public class OrderService implements IOrderService {
 
     private final OrderDao orderDao;
+
 
     public OrderService() {
         orderDao = new OrderDao();

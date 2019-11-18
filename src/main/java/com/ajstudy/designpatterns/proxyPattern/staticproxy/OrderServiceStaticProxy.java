@@ -1,4 +1,4 @@
-package com.ajstudy.designpatterns.proxyPattern;
+package com.ajstudy.designpatterns.proxyPattern.staticproxy;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Date;
  * @Description: TODO
  * @date: 2019-11-06  8:48
  */
-public class OrderServiceStaticProxy implements IOrderService{
+public class OrderServiceStaticProxy extends Order implements IOrderService{
     private OrderService orderService;
     private SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
 

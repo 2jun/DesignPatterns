@@ -1,4 +1,4 @@
-package com.ajstudy.designpatterns.proxyPattern;
+package com.ajstudy.designpatterns.proxyPattern.staticproxy;
 
 /**
  * @ClassName: OrderDao
