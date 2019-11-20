@@ -1,6 +1,5 @@
 package com.ajstudy.designpatterns.PrototypePattern.depthClone;
 
-import lombok.Data;
 
 import java.util.Date;
 
@@ -10,9 +9,14 @@ import java.util.Date;
  * @Description: TODO
  * @date: 2019-11-04  13:11
  */
-@Data
 public class Monkey {
     public int height;
     public int weight;
     public Date birthday;
+
+    public Monkey(int height, int weight, Date birthday) {
+        this.height = height;
+        this.weight = weight;
+        this.birthday = birthday;
+    }
 }

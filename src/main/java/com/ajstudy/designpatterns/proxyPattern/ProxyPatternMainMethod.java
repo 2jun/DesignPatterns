@@ -63,7 +63,7 @@ public class ProxyPatternMainMethod {
         try {
             Person obj = (Person) new JDKMeipo().getInstance(new Customer());
             obj.findLove();
-//通过反编译工具可以查看源代码
+            //通过反编译工具可以查看源代码
             byte[] bytes = ProxyGenerator.generateProxyClass("$Proxy0", new Class[]{Person.class});
             FileOutputStream os = new FileOutputStream("E://$Proxy0.class");
             os.write(bytes);
