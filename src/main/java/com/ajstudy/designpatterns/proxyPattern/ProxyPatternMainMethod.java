@@ -1,8 +1,8 @@
 package com.ajstudy.designpatterns.proxyPattern;
 
-import com.ajstudy.designpatterns.proxyPattern.dynamicproxy.Customer;
-import com.ajstudy.designpatterns.proxyPattern.dynamicproxy.JDKMeipo;
-import com.ajstudy.designpatterns.proxyPattern.dynamicproxy.OrderServiceDynamicProxy;
+import com.ajstudy.designpatterns.proxyPattern.dynamicproxy.jdkproxy.Customer;
+import com.ajstudy.designpatterns.proxyPattern.dynamicproxy.jdkproxy.JDKMeipo;
+import com.ajstudy.designpatterns.proxyPattern.dynamicproxy.jdkproxy.OrderServiceDynamicProxy;
 import com.ajstudy.designpatterns.proxyPattern.staticproxy.*;
 import sun.misc.ProxyGenerator;
 

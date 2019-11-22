@@ -1,6 +1,6 @@
 package com.ajstudy.designpatterns.proxyPattern.ajproxy;
 
-import com.ajstudy.designpatterns.proxyPattern.dynamicproxy.Customer;
+import com.ajstudy.designpatterns.proxyPattern.dynamicproxy.jdkproxy.Customer;
 import com.ajstudy.designpatterns.proxyPattern.staticproxy.Person;
 
 /**

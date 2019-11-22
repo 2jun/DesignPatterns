@@ -57,7 +57,7 @@ public class AJProxy {
     }
 
     private static String generateSrc(Class<?>[] interfaces){
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("package com.ajstudy.designpatterns.proxyPattern.ajproxy;" + ln);
         sb.append("import com.ajstudy.designpatterns.proxyPattern.staticproxy.Person;" + ln);
         sb.append("import java.lang.reflect.*;" + ln);
@@ -69,9 +69,9 @@ public class AJProxy {
         for (Method m : interfaces[0].getMethods()){
             Class<?>[] params = m.getParameterTypes();
 
-            StringBuffer paramNames = new StringBuffer();
-            StringBuffer paramValues = new StringBuffer();
-            StringBuffer paramClasses = new StringBuffer();
+            StringBuilder paramNames = new StringBuilder();
+            StringBuilder paramValues = new StringBuilder();
+            StringBuilder paramClasses = new StringBuilder();
 
             for (int i = 0; i < params.length; i++) {
                 Class clazz = params[i];

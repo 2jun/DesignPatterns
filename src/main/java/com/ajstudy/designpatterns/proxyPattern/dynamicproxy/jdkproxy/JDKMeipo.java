@@ -1,4 +1,4 @@
-package com.ajstudy.designpatterns.proxyPattern.dynamicproxy;
+package com.ajstudy.designpatterns.proxyPattern.dynamicproxy.jdkproxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

@@ -1,4 +1,4 @@
-package com.ajstudy.designpatterns.proxyPattern.dynamicproxy;
+package com.ajstudy.designpatterns.proxyPattern.dynamicproxy.jdkproxy;
 
 import com.ajstudy.designpatterns.proxyPattern.staticproxy.DynamicDataSourceEntry;
 
