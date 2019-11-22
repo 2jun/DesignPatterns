@@ -9,8 +9,4 @@ package com.ajstudy.designpatterns.delegatepattern.simple;
 public interface IEmployee {
     void doing(String command);
 
-    public static void main(String[] args) {
-        String s="1";
-        System.out.println(s.equals(null));
-    }
 }
