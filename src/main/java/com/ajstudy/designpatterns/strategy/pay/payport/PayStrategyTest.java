@@ -5,6 +5,15 @@ package com.ajstudy.designpatterns.strategy.pay.payport;
  * @Author: aiJun
  * @Description: TODO
  * @date: 2019-11-26  18:53
+ *
+ * 策略模式的优缺点
+ * 优点：
+ * 1、策略模式符合开闭原则。
+ * 2、避免使用多重条件转移语句，如if...else...语句、switch 语句
+ * 3、使用策略模式可以提高算法的保密性和安全性。
+ * 缺点：
+ * 1、客户端必须知道所有的策略，并且自行决定使用哪一个策略类。
+ * 2、代码中会产生非常多策略类，增加维护难度。
  */
 public class PayStrategyTest {
     public static void main(String[] args) {
