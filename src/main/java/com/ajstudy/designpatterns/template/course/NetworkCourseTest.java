@@ -5,6 +5,10 @@ package com.ajstudy.designpatterns.template.course;
  * @Author: aiJun
  * @Description: TODO
  * @date: 2019-11-27  13:43
+ *
+ *
+ *
+ *
  */
 public class NetworkCourseTest {
     public static void main(String[] args) {
