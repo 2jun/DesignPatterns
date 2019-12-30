@@ -1,0 +1,46 @@
+package com.ajstudy.designpatterns.decorator.battercake.upgrade;
+
+import com.ajstudy.designpatterns.decorator.battercake.old.ISigninService;
+import com.ajstudy.designpatterns.decorator.battercake.old.ResultMsg;
+
+/**
+ * @ClassName: SigninForThirdService
+ * @Author: aiJun
+ * @Description: TODO
+ * @date: 2019-12-30  17:01
+ */
+public class SigninForThirdService implements ISigninForThirdService {
+    private ISigninService signin;
+
+    public SigninForThirdService(ISigninService iSignin) {
+        this.signin = signin;
+    }
+
+    public ResultMsg regist(String username, String passport) {
+        return signin.regist(username, passport);
+    }
+
+    public ResultMsg login(String username, String passport) {
+        return signin.login(username, passport);
+    }
+
+    public ResultMsg loginForQQ(String id) {
+        return null;
+    }
+
+    public ResultMsg loginForWechat(String id) {
+        return null;
+    }
+
+    public ResultMsg loginForToken(String token) {
+        return null;
+    }
+
+    public ResultMsg loginForTelphone(String telphone, String code) {
+        return null;
+    }
+
+    public ResultMsg loginForRegist(String username, String passport) {
+        return null;
+    }
+}
