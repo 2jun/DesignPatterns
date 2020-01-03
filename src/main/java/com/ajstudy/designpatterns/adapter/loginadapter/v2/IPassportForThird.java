@@ -13,8 +13,6 @@ public interface IPassportForThird {
      * QQ 登录
      * @param id
      * @return
-    咕泡出品，必属精品www.gupaoedu.com
-    23
      */
     ResultMsg loginForQQ(String id);
     /**
